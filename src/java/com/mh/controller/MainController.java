@@ -5,33 +5,27 @@
  */
 package com.mh.controller;
 
-import com.mh.entity.Users;
-import com.mh.user.controller.LoginController;
-import com.mh.user.controller.LogoutController;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import static com.mh.controller.ProcessLib.*;
-
+import static com.mh.controller.Constants.*;
 /**
  *
  * @author saost
  */
 public class MainController implements Filter {
-    private static final String SHOP_PAGE = "shop.jsp";
-    private static final String LOGIN_PAGE = "login.jsp";
-    private static final String LOGOUT = LogoutController.class.getSimpleName();
-    private static final String LOGIN = LoginController.class.getSimpleName();
 
+    private static final Map<String, String> mappedResources = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     private static List<String> adminResource;
     private static List<String> memberResource;
@@ -47,7 +41,26 @@ public class MainController implements Filter {
         memberResource = new ArrayList<>();
         guestResource = new ArrayList<>();
 
+        mappedResources.put("Login", LOGIN_CONTROLLER);
+        mappedResources.put("Logout", LOGOUT_CONTROLLER);
+        mappedResources.put("Create cake", CREATE_CAKE_CONTROLLER);
+        mappedResources.put("View cake shop", VIEW_CAKE_SHOP_CONTROLLER);
+        mappedResources.put("Register", REGISTER_CONTROLLER);
 
+        guestResource.add(LOGIN_PAGE);
+        guestResource.add(LOGIN_CONTROLLER);
+        guestResource.add(SHOPPING_PAGE);
+        guestResource.add(VIEW_CAKE_SHOP_CONTROLLER);
+        guestResource.add(REGISTER_CONTROLLER);
+
+        adminResource.add(CREATE_CAKE_PAGE);
+        adminResource.add(CREATE_CAKE_CONTROLLER);
+
+
+    }
+
+    private boolean isUnrestrictedResource(String resource) {
+        return guestResource.contains(resource) || resource.toLowerCase().matches("(.*?)\\.(js|css|png|jpeg|jpg)");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
@@ -64,105 +77,61 @@ public class MainController implements Filter {
             log("MainController:DoAfterProcessing");
         }
 
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
     }
 
 
-    public void doFilter(ServletRequest request, ServletResponse response,
+    public void doFilter(ServletRequest rq, ServletResponse rs,
             FilterChain chain)
             throws IOException, ServletException {
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+        HttpServletRequest request = (HttpServletRequest) rq;
+        HttpServletResponse response = (HttpServletResponse) rs;
 
-        String uri = httpServletRequest.getRequestURI();
-        String url = SHOP_PAGE;
+        String resource = getResource(request);
+        log("resource: " + resource);
 
         try {
-            if ((uri.contains(".js")
-                    || uri.contains(".css")
-                    || uri.contains(".eot")
-                    || uri.contains(".svg")
-                    || uri.contains(".ttf")
-                    || uri.contains(".woff")
-                    || uri.contains(".woff2")
-                    || uri.contains(".jpg")
-                    || uri.contains(".png")
-                    || uri.contains(".jpeg"))
-                    && !uri.contains(".jsp")) {
+            String action = request.getParameter("action");
+            String directedResource = mappedResources.get(action);
+
+            if (directedResource != null){
+                request.getRequestDispatcher(directedResource).forward(request, response);
+                return;
+            }
+
+            if (isUnrestrictedResource(resource)){
                 chain.doFilter(request, response);
                 return;
-            } else {
-                // all user can access
-                if (uri.contains(LOGIN_PAGE)
-                    || uri.contains(SHOP_PAGE)){
-                    chain.doFilter(request, response);
-                     return;
-                }
             }
 
 
-            //MainController
-            String action = httpServletRequest.getParameter("btnAction");
-            if(action == null)action = "";
-            switch (action){
-                case "Login":
-                    url = LOGIN;
-                    break;
-                case "Logout":
-                    url = LOGOUT;
-                    break;
-                default:
-                    url = SHOP_PAGE;
-                    break;
+            //check User role and return is having right to access or not
+            if (isHavingAccessRight(request, resource)){
+                chain.doFilter(request, response);
+                return;
             }
-            httpServletRequest.getRequestDispatcher(url).forward(request, response);
 
+            response.sendRedirect(LOGIN_PAGE);
 
-            //Authen Filter
-            String resource = url;
-
-            //get user role
-            int role = getUserRole(httpServletRequest);
-            if (role == GUEST && guestResource.contains(resource)){
-                chain.doFilter(request, response);
-            } else if (role == MEMBER && memberResource.contains(resource)){
-                chain.doFilter(request, response);
-            } else if (role == ADMIN && adminResource.contains(resource)){
-                chain.doFilter(request, response);
-            } else {
-                httpServletResponse.sendRedirect(LOGIN_PAGE);
-            }
 
         } catch (Exception e){
+            log(e.getMessage());
             e.printStackTrace();
         }
     }
+
+    //get resource (cut uri)
+    public String getResource(HttpServletRequest request){
+        return request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/") + 1);
+    }
+
 
     //authen check function
     public boolean isHavingAccessRight(HttpServletRequest httpServletRequest, String resource){
 
         //get user role
         int role = getUserRole(httpServletRequest);
-        if (role == GUEST && guestResource.contains(resource)){
-            return true;
-        } else if (role == MEMBER && memberResource.contains(resource)){
+        if (role == MEMBER && memberResource.contains(resource)){
             return true;
         } else if (role == ADMIN && adminResource.contains(resource)){
             return true;
@@ -194,7 +163,7 @@ public class MainController implements Filter {
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {
+     public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {

@@ -26,6 +26,10 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>com.mh.user.controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateUserController</servlet-name>
+        <servlet-class>com.mh.user.controller.RegisterController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewCakeShopController</servlet-name>
         <url-pattern>/ViewCakeShopController</url-pattern>
@@ -41,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateUserController</servlet-name>
+        <url-pattern>/CreateUserController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
