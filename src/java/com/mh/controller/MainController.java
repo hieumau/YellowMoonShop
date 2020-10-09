@@ -60,7 +60,8 @@ public class MainController implements Filter {
     }
 
     private boolean isUnrestrictedResource(String resource) {
-        return guestResource.contains(resource) || resource.toLowerCase().matches("(.*?)\\.(js|css|png|jpeg|jpg)");
+        return guestResource.contains(resource) || resource.toLowerCase().matches("(.*?)\\.(js|css|png|jpeg|jpg|otf|" +
+                "eot|svg|ttf|woff|woff2|map|js|scss)");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
@@ -87,16 +88,20 @@ public class MainController implements Filter {
         HttpServletRequest request = (HttpServletRequest) rq;
         HttpServletResponse response = (HttpServletResponse) rs;
 
+        String uri = request.getRequestURI();
         String resource = getResource(request);
         log("resource: " + resource);
 
         try {
-            String action = request.getParameter("action");
-            String directedResource = mappedResources.get(action);
+            if (uri.contains("MainController")){
+                String action = request.getParameter("btnAction");
+                String directedResource = null;
+                if (action != null) directedResource = mappedResources.get(action);
 
-            if (directedResource != null){
-                request.getRequestDispatcher(directedResource).forward(request, response);
-                return;
+                if (directedResource != null){
+                    request.getRequestDispatcher(directedResource).forward(request, response);
+                    return;
+                }
             }
 
             if (isUnrestrictedResource(resource)){
