@@ -11,14 +11,6 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <servlet>
-        <servlet-name>ViewCakeShopController</servlet-name>
-        <servlet-class>com.mh.cake.controller.ViewCakeShopController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CreateCakeController</servlet-name>
-        <servlet-class>com.mh.cake.controller.CreateCakeController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>com.mh.user.controller.LoginController</servlet-class>
     </servlet>
@@ -30,14 +22,18 @@
         <servlet-name>CreateUserController</servlet-name>
         <servlet-class>com.mh.user.controller.RegisterController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ViewCakeShopController</servlet-name>
-        <url-pattern>/ViewCakeShopController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>com.mh.user.controller.RegisterController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CreateCakeController</servlet-name>
-        <url-pattern>/CreateCakeController</url-pattern>
-    </servlet-mapping>
+        <servlet-class>com.mh.cake.controller.CreateCakeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCakeShopController</servlet-name>
+        <servlet-class>com.mh.cake.controller.ViewCakeShopController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -49,6 +45,18 @@
     <servlet-mapping>
         <servlet-name>CreateUserController</servlet-name>
         <url-pattern>/CreateUserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/RegisterController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCakeController</servlet-name>
+        <url-pattern>/CreateCakeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCakeShopController</servlet-name>
+        <url-pattern>/ViewCakeShopController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

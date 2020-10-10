@@ -5,14 +5,13 @@
  */
 package com.mh.jpa_controller;
 
+import com.mh.entity.OrderDetail;
+import com.mh.entity.OrderDetailPK;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import com.mh.entity.Cake;
-import com.mh.entity.OrderDetail;
-import com.mh.entity.OrderDetailPK;
 import com.mh.entity.Orders;
 import com.mh.jpa_controller.exceptions.NonexistentEntityException;
 import com.mh.jpa_controller.exceptions.PreexistingEntityException;
@@ -45,21 +44,12 @@ public class OrderDetailJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cake cake = orderDetail.getCake();
-            if (cake != null) {
-                cake = em.getReference(cake.getClass(), cake.getId());
-                orderDetail.setCake(cake);
-            }
             Orders orders = orderDetail.getOrders();
             if (orders != null) {
                 orders = em.getReference(orders.getClass(), orders.getId());
                 orderDetail.setOrders(orders);
             }
             em.persist(orderDetail);
-            if (cake != null) {
-                cake.getOrderDetailCollection().add(orderDetail);
-                cake = em.merge(cake);
-            }
             if (orders != null) {
                 orders.getOrderDetailCollection().add(orderDetail);
                 orders = em.merge(orders);
@@ -85,27 +75,13 @@ public class OrderDetailJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             OrderDetail persistentOrderDetail = em.find(OrderDetail.class, orderDetail.getOrderDetailPK());
-            Cake cakeOld = persistentOrderDetail.getCake();
-            Cake cakeNew = orderDetail.getCake();
             Orders ordersOld = persistentOrderDetail.getOrders();
             Orders ordersNew = orderDetail.getOrders();
-            if (cakeNew != null) {
-                cakeNew = em.getReference(cakeNew.getClass(), cakeNew.getId());
-                orderDetail.setCake(cakeNew);
-            }
             if (ordersNew != null) {
                 ordersNew = em.getReference(ordersNew.getClass(), ordersNew.getId());
                 orderDetail.setOrders(ordersNew);
             }
             orderDetail = em.merge(orderDetail);
-            if (cakeOld != null && !cakeOld.equals(cakeNew)) {
-                cakeOld.getOrderDetailCollection().remove(orderDetail);
-                cakeOld = em.merge(cakeOld);
-            }
-            if (cakeNew != null && !cakeNew.equals(cakeOld)) {
-                cakeNew.getOrderDetailCollection().add(orderDetail);
-                cakeNew = em.merge(cakeNew);
-            }
             if (ordersOld != null && !ordersOld.equals(ordersNew)) {
                 ordersOld.getOrderDetailCollection().remove(orderDetail);
                 ordersOld = em.merge(ordersOld);
@@ -142,11 +118,6 @@ public class OrderDetailJpaController implements Serializable {
                 orderDetail.getOrderDetailPK();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The orderDetail with id " + id + " no longer exists.", enfe);
-            }
-            Cake cake = orderDetail.getCake();
-            if (cake != null) {
-                cake.getOrderDetailCollection().remove(orderDetail);
-                cake = em.merge(cake);
             }
             Orders orders = orderDetail.getOrders();
             if (orders != null) {

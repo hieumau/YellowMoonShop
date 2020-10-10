@@ -45,7 +45,7 @@
       </div>
 
       <div class="col-md-12 form-group">
-       <input type="password" class="form-control"  name="rePassword" placeholder="Re-Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Re-Password'">
+       <input type="password" class="form-control"  name="passwordRepeat" placeholder="Re-Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Re-Password'">
       </div>
 
       <div class="col-md-12 form-group">

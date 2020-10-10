@@ -5,12 +5,15 @@
  */
 package com.mh.user.controller;
 
+import com.mh.controller.Constants;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,17 +33,17 @@ public class LogoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LogoutController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LogoutController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = Constants.LOGIN_PAGE;
+
+        try {
+            HttpSession session = request.getSession(true);
+            if (session != null) {
+                session.invalidate();
+            }
+        } catch (Exception e) {
+            log("Log out error: " + e.toString());
+        } finally {
+            response.sendRedirect(url);
         }
     }
 

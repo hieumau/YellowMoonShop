@@ -13,11 +13,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import com.mh.entity.Category;
 import com.mh.entity.Users;
-import com.mh.entity.OrderDetail;
-import com.mh.jpa_controller.exceptions.IllegalOrphanException;
 import com.mh.jpa_controller.exceptions.NonexistentEntityException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,9 +34,6 @@ public class CakeJpaController implements Serializable {
     }
 
     public void create(Cake cake) {
-        if (cake.getOrderDetailCollection() == null) {
-            cake.setOrderDetailCollection(new ArrayList<OrderDetail>());
-        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -55,12 +48,6 @@ public class CakeJpaController implements Serializable {
                 modifyUserId = em.getReference(modifyUserId.getClass(), modifyUserId.getId());
                 cake.setModifyUserId(modifyUserId);
             }
-            Collection<OrderDetail> attachedOrderDetailCollection = new ArrayList<OrderDetail>();
-            for (OrderDetail orderDetailCollectionOrderDetailToAttach : cake.getOrderDetailCollection()) {
-                orderDetailCollectionOrderDetailToAttach = em.getReference(orderDetailCollectionOrderDetailToAttach.getClass(), orderDetailCollectionOrderDetailToAttach.getOrderDetailPK());
-                attachedOrderDetailCollection.add(orderDetailCollectionOrderDetailToAttach);
-            }
-            cake.setOrderDetailCollection(attachedOrderDetailCollection);
             em.persist(cake);
             if (categoryId != null) {
                 categoryId.getCakeCollection().add(cake);
@@ -70,15 +57,6 @@ public class CakeJpaController implements Serializable {
                 modifyUserId.getCakeCollection().add(cake);
                 modifyUserId = em.merge(modifyUserId);
             }
-            for (OrderDetail orderDetailCollectionOrderDetail : cake.getOrderDetailCollection()) {
-                Cake oldCakeOfOrderDetailCollectionOrderDetail = orderDetailCollectionOrderDetail.getCake();
-                orderDetailCollectionOrderDetail.setCake(cake);
-                orderDetailCollectionOrderDetail = em.merge(orderDetailCollectionOrderDetail);
-                if (oldCakeOfOrderDetailCollectionOrderDetail != null) {
-                    oldCakeOfOrderDetailCollectionOrderDetail.getOrderDetailCollection().remove(orderDetailCollectionOrderDetail);
-                    oldCakeOfOrderDetailCollectionOrderDetail = em.merge(oldCakeOfOrderDetailCollectionOrderDetail);
-                }
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -87,7 +65,7 @@ public class CakeJpaController implements Serializable {
         }
     }
 
-    public void edit(Cake cake) throws IllegalOrphanException, NonexistentEntityException, Exception {
+    public void edit(Cake cake) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -97,20 +75,6 @@ public class CakeJpaController implements Serializable {
             Category categoryIdNew = cake.getCategoryId();
             Users modifyUserIdOld = persistentCake.getModifyUserId();
             Users modifyUserIdNew = cake.getModifyUserId();
-            Collection<OrderDetail> orderDetailCollectionOld = persistentCake.getOrderDetailCollection();
-            Collection<OrderDetail> orderDetailCollectionNew = cake.getOrderDetailCollection();
-            List<String> illegalOrphanMessages = null;
-            for (OrderDetail orderDetailCollectionOldOrderDetail : orderDetailCollectionOld) {
-                if (!orderDetailCollectionNew.contains(orderDetailCollectionOldOrderDetail)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain OrderDetail " + orderDetailCollectionOldOrderDetail + " since its cake field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
             if (categoryIdNew != null) {
                 categoryIdNew = em.getReference(categoryIdNew.getClass(), categoryIdNew.getId());
                 cake.setCategoryId(categoryIdNew);
@@ -119,13 +83,6 @@ public class CakeJpaController implements Serializable {
                 modifyUserIdNew = em.getReference(modifyUserIdNew.getClass(), modifyUserIdNew.getId());
                 cake.setModifyUserId(modifyUserIdNew);
             }
-            Collection<OrderDetail> attachedOrderDetailCollectionNew = new ArrayList<OrderDetail>();
-            for (OrderDetail orderDetailCollectionNewOrderDetailToAttach : orderDetailCollectionNew) {
-                orderDetailCollectionNewOrderDetailToAttach = em.getReference(orderDetailCollectionNewOrderDetailToAttach.getClass(), orderDetailCollectionNewOrderDetailToAttach.getOrderDetailPK());
-                attachedOrderDetailCollectionNew.add(orderDetailCollectionNewOrderDetailToAttach);
-            }
-            orderDetailCollectionNew = attachedOrderDetailCollectionNew;
-            cake.setOrderDetailCollection(orderDetailCollectionNew);
             cake = em.merge(cake);
             if (categoryIdOld != null && !categoryIdOld.equals(categoryIdNew)) {
                 categoryIdOld.getCakeCollection().remove(cake);
@@ -142,17 +99,6 @@ public class CakeJpaController implements Serializable {
             if (modifyUserIdNew != null && !modifyUserIdNew.equals(modifyUserIdOld)) {
                 modifyUserIdNew.getCakeCollection().add(cake);
                 modifyUserIdNew = em.merge(modifyUserIdNew);
-            }
-            for (OrderDetail orderDetailCollectionNewOrderDetail : orderDetailCollectionNew) {
-                if (!orderDetailCollectionOld.contains(orderDetailCollectionNewOrderDetail)) {
-                    Cake oldCakeOfOrderDetailCollectionNewOrderDetail = orderDetailCollectionNewOrderDetail.getCake();
-                    orderDetailCollectionNewOrderDetail.setCake(cake);
-                    orderDetailCollectionNewOrderDetail = em.merge(orderDetailCollectionNewOrderDetail);
-                    if (oldCakeOfOrderDetailCollectionNewOrderDetail != null && !oldCakeOfOrderDetailCollectionNewOrderDetail.equals(cake)) {
-                        oldCakeOfOrderDetailCollectionNewOrderDetail.getOrderDetailCollection().remove(orderDetailCollectionNewOrderDetail);
-                        oldCakeOfOrderDetailCollectionNewOrderDetail = em.merge(oldCakeOfOrderDetailCollectionNewOrderDetail);
-                    }
-                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -171,7 +117,7 @@ public class CakeJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -182,17 +128,6 @@ public class CakeJpaController implements Serializable {
                 cake.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The cake with id " + id + " no longer exists.", enfe);
-            }
-            List<String> illegalOrphanMessages = null;
-            Collection<OrderDetail> orderDetailCollectionOrphanCheck = cake.getOrderDetailCollection();
-            for (OrderDetail orderDetailCollectionOrphanCheckOrderDetail : orderDetailCollectionOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Cake (" + cake + ") cannot be destroyed since the OrderDetail " + orderDetailCollectionOrphanCheckOrderDetail + " in its orderDetailCollection field has a non-nullable cake field.");
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             Category categoryId = cake.getCategoryId();
             if (categoryId != null) {

@@ -29,5 +29,9 @@ public class ProcessLib {
         else return ADMIN;
     }
 
+    public static HttpSession getSession(HttpServletRequest request){
+        return request.getSession();
+    }
+
 
 }

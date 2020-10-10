@@ -7,10 +7,8 @@ package com.mh.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +18,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -42,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cake.findByDescription", query = "SELECT c FROM Cake c WHERE c.description = :description")
     , @NamedQuery(name = "Cake.findByPrice", query = "SELECT c FROM Cake c WHERE c.price = :price")
     , @NamedQuery(name = "Cake.findByCreateDate", query = "SELECT c FROM Cake c WHERE c.createDate = :createDate")
-    , @NamedQuery(name = "Cake.findByExprirationDate", query = "SELECT c FROM Cake c WHERE c.exprirationDate = :exprirationDate")
+    , @NamedQuery(name = "Cake.findByExpirationDate", query = "SELECT c FROM Cake c WHERE c.expirationDate = :expirationDate")
     , @NamedQuery(name = "Cake.findByQuantity", query = "SELECT c FROM Cake c WHERE c.quantity = :quantity")
     , @NamedQuery(name = "Cake.findByStatus", query = "SELECT c FROM Cake c WHERE c.status = :status")
     , @NamedQuery(name = "Cake.findByModifyDate", query = "SELECT c FROM Cake c WHERE c.modifyDate = :modifyDate")})
@@ -72,9 +68,9 @@ public class Cake implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
     @Basic(optional = false)
-    @Column(name = "exprirationDate")
+    @Column(name = "expirationDate")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date exprirationDate;
+    private Date expirationDate;
     @Basic(optional = false)
     @Column(name = "quantity")
     private int quantity;
@@ -84,8 +80,6 @@ public class Cake implements Serializable {
     @Column(name = "modifyDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifyDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cake")
-    private Collection<OrderDetail> orderDetailCollection;
     @JoinColumn(name = "categoryId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Category categoryId;
@@ -100,14 +94,14 @@ public class Cake implements Serializable {
         this.id = id;
     }
 
-    public Cake(Integer id, String name, String imagePath, String description, BigDecimal price, Date createDate, Date exprirationDate, int quantity, boolean status) {
+    public Cake(Integer id, String name, String imagePath, String description, BigDecimal price, Date createDate, Date expirationDate, int quantity, boolean status) {
         this.id = id;
         this.name = name;
         this.imagePath = imagePath;
         this.description = description;
         this.price = price;
         this.createDate = createDate;
-        this.exprirationDate = exprirationDate;
+        this.expirationDate = expirationDate;
         this.quantity = quantity;
         this.status = status;
     }
@@ -160,12 +154,12 @@ public class Cake implements Serializable {
         this.createDate = createDate;
     }
 
-    public Date getExprirationDate() {
-        return exprirationDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExprirationDate(Date exprirationDate) {
-        this.exprirationDate = exprirationDate;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public int getQuantity() {
@@ -190,15 +184,6 @@ public class Cake implements Serializable {
 
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
-    }
-
-    @XmlTransient
-    public Collection<OrderDetail> getOrderDetailCollection() {
-        return orderDetailCollection;
-    }
-
-    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
-        this.orderDetailCollection = orderDetailCollection;
     }
 
     public Category getCategoryId() {

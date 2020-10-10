@@ -24,6 +24,7 @@ import static com.mh.controller.Constants.*;
  * @author saost
  */
 public class MainController implements Filter {
+    private String encoding = "utf-8";
 
     private static final Map<String, String> mappedResources = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
@@ -85,6 +86,8 @@ public class MainController implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
 
+        rq.setCharacterEncoding(encoding);
+
         HttpServletRequest request = (HttpServletRequest) rq;
         HttpServletResponse response = (HttpServletResponse) rs;
 
@@ -124,6 +127,9 @@ public class MainController implements Filter {
             e.printStackTrace();
         }
     }
+
+    //charset init
+
 
     //get resource (cut uri)
     public String getResource(HttpServletRequest request){
@@ -175,6 +181,11 @@ public class MainController implements Filter {
                 log("MainController:Initializing filter");
             }
         }
+
+         String encodingParam = filterConfig.getInitParameter("encoding");
+         if (encodingParam != null) {
+             encoding = encodingParam;
+         }
     }
 
     /**

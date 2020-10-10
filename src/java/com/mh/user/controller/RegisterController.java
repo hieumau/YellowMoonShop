@@ -5,19 +5,26 @@
  */
 package com.mh.user.controller;
 
+import com.mh.controller.Constants;
+import com.mh.entity.Users;
+import com.mh.user.UserBLO;
+import com.mh.user.UserError;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author saost
  */
 public class RegisterController extends HttpServlet {
-
+    private static final String ERROR = Constants.LOGIN_PAGE;
+    private static final String SUCCESS = Constants.LOGIN_PAGE;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,17 +37,44 @@ public class RegisterController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CreateUserController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CreateUserController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = ERROR;
+        UserError userError = new UserError();
+
+        try {
+            String userId = request.getParameter("userId");
+            String password = request.getParameter("password");
+            String passwordRepeat = request.getParameter("passwordRepeat");
+            String fullName = request.getParameter("fullName");
+            String address = request.getParameter("address");
+            String phoneNumber = request.getParameter("phoneNumber");
+            boolean check = true;
+
+            UserBLO userBLO = new UserBLO();
+
+            if (userBLO.isExitsUserId(userId)){
+                userError.setUserIdError("This email is used");
+                check = false;
+            }
+
+            if (!passwordRepeat.equals(password)){
+                userError.setPasswordRepeatError("Password is not match");
+                check = false;
+            }
+
+            if (check) {
+                Users user = userBLO.create(userId, password, fullName, address, phoneNumber);
+                if (user != null){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("AUTH_USER", user);
+                    url = SUCCESS;
+                }
+            } else {
+                request.setAttribute("USER_ERROR",userError);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
