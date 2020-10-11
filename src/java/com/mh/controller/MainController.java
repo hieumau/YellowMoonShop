@@ -119,7 +119,7 @@ public class MainController implements Filter {
                 return;
             }
 
-            response.sendRedirect(LOGIN_PAGE);
+            response.sendRedirect(SHOPPING_PAGE);
 
 
         } catch (Exception e){

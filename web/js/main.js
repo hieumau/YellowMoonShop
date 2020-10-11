@@ -244,8 +244,6 @@ $(document).ready(function(){
 
     //----- Active No ui slider --------//
 
-
-
     $(function(){
 
         if(document.getElementById("price-range")){
@@ -255,14 +253,14 @@ $(document).ready(function(){
         noUiSlider.create(nonLinearSlider, {
             connect: true,
             behaviour: 'tap',
-            start: [ 500, 4000 ],
+            start: [ 0, 5000 ],
             range: {
                 // Starting at 500, step the value by 500,
                 // until 4000 is reached. From there, step by 1000.
-                'min': [ 0 ],
-                '10%': [ 500, 500 ],
-                '50%': [ 4000, 1000 ],
-                'max': [ 10000 ]
+                'min': [ 0, 1 ],
+                '10%': [ 500, 1 ],
+                '50%': [ 4000, 1],
+                'max': [ 5000 ]
             }
         });
 
@@ -272,10 +270,17 @@ $(document).ready(function(){
             document.getElementById('upper-value')  // 1
         ];
 
+        var priceRange = [
+            document.getElementById('minPrice'), // 0
+            document.getElementById('maxPrice')  // 1
+        ];
+
         // Display the slider value and how far the handle moved
         // from the left edge of the slider.
         nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
             nodes[handle].innerHTML = values[handle];
+            priceRange[handle].innerHTML = values[handle];
+
         });
 
         }

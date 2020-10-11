@@ -9,6 +9,19 @@
 <!DOCTYPE html>
 <html>
 <%@include file="user_header.jsp"%>
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+ <div class="container">
+  <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+   <div class="col-first">
+    <h1>Login/Register</h1>
+   </div>
+  </div>
+ </div>
+</section>
+<!-- End Banner Area -->
+
 <!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
  <div class="container">
