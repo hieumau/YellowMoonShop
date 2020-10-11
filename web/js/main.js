@@ -279,7 +279,9 @@ $(document).ready(function(){
         // from the left edge of the slider.
         nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
             nodes[handle].innerHTML = values[handle];
-            priceRange[handle].innerHTML = values[handle];
+            // priceRange[handle].innerHTML = values[handle];
+            document.getElementById('minPrice').value = values[0];
+            document.getElementById('maxPrice').value = values[1];
 
         });
 

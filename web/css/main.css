@@ -995,7 +995,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 40px;
   width: 100%; }
-  @media (max-width: 991px) {
+  @media (max-width: 0px) {
     .sticky-wrapper {
       top: 0; } }
 
@@ -1024,7 +1024,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px;
     border: 0px;
     border-radius: 0px; }
-    @media (max-width: 991px) {
+    @media (max-width: 0px) {
       .header_area .navbar .navbar-collapse {
         margin-top: 30px; }
         .header_area .navbar .navbar-collapse .nav-item {
@@ -1046,7 +1046,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 12px;
         font-weight: 500;
         color: #222222; }
-        @media (min-width: 991px) {
+        @media (min-width: 0px) {
           .header_area .navbar .nav .nav-item .nav-link {
             padding: 10px 0; } }
         .header_area .navbar .nav .nav-item .nav-link:after {
@@ -1062,7 +1062,7 @@ h1, h2, h3, h4, h5, h6 {
           box-shadow: none;
           margin: 0px;
           background: #fff; }
-          @media (min-width: 992px) {
+          @media (min-width: 0px) {
             .header_area .navbar .nav .nav-item.submenu ul {
               position: absolute;
               top: 140%;
@@ -1120,7 +1120,7 @@ h1, h2, h3, h4, h5, h6 {
             .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
               background: #ffba00;
               color: #fff; }
-        @media (min-width: 992px) {
+        @media (min-width: 0px) {
           .header_area .navbar .nav .nav-item.submenu:hover ul {
             visibility: visible;
             opacity: 1; } }
@@ -1128,18 +1128,18 @@ h1, h2, h3, h4, h5, h6 {
           margin-top: 0px; }
       .header_area .navbar .nav .nav-item:last-child {
         margin-right: 0px; }
-    @media (min-width: 991px) {
+    @media (min-width: 0px) {
       .header_area .navbar .nav.navbar-nav.navbar-right {
         display: -webkit-inline-box; } }
     .header_area .navbar .nav.navbar-nav.navbar-right li {
       margin-left: 25px;
       margin-right: 0px; }
-      @media (max-width: 991px) {
+      @media (max-width: 0px) {
         .header_area .navbar .nav.navbar-nav.navbar-right li {
           margin-left: 0px; } }
       .header_area .navbar .nav.navbar-nav.navbar-right li:first-child {
         margin-left: 35px; }
-        @media (max-width: 991px) {
+        @media (max-width: 0px) {
           .header_area .navbar .nav.navbar-nav.navbar-right li:first-child {
             display: none; } }
       .header_area .navbar .nav.navbar-nav.navbar-right li span {

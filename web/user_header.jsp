@@ -99,6 +99,9 @@
         <div class="container">
             <form class="d-flex justify-content-between">
                 <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                <input type="hidden" id="minPrice" name="minPrice" value="">
+                <input type="hidden" id="maxPrice" name="maxPrice" value="">
+
                 <button type="submit" class="btn"></button>
                 <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
             </form>

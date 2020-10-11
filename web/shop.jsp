@@ -9,6 +9,7 @@
 <html>
 <%@include file="user_header.jsp"%>
     <body>
+
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">

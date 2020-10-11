@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="Log">
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cake/CakeBLO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/YellowMoonShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/YellowMoonShop.iml" afterDir="false" />
+    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="working on shoping page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/user_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/user_header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601975660967</updated>
-      <workItem from="1601975662214" duration="56639000" />
+      <workItem from="1601975662214" duration="58811000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <created>1602151726018</created>
@@ -105,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602342358749</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="working on shoping page">
+      <created>1602393259805</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1602393259805</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +122,8 @@
     <MESSAGE value="before add theme" />
     <MESSAGE value="Apply theme" />
     <MESSAGE value="Log" />
-    <option name="LAST_COMMIT_MESSAGE" value="Log" />
+    <MESSAGE value="working on shoping page" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on shoping page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="55" key="#Project_Structure" timestamp="1602150533514">
@@ -164,10 +170,10 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="878" y="0" width="896" height="961" key="dock-window-1/0.0.1768.955@0.0.1768.955" timestamp="1602150129102" />
-    <state x="342" y="62" width="289" height="379" maximized="true" key="dock-window-2" timestamp="1602337946642">
+    <state x="342" y="62" width="289" height="379" key="dock-window-2" timestamp="1602395425107">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="342" y="62" width="289" height="379" maximized="true" key="dock-window-2/0.0.1768.955@0.0.1768.955" timestamp="1602337946642" />
+    <state x="342" y="62" width="289" height="379" key="dock-window-2/0.0.1768.955@0.0.1768.955" timestamp="1602395425107" />
     <state x="311" y="271" key="svn.repositoryBrowser" timestamp="1602151270619">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
