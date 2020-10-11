@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <%@include file="user_header.jsp"%>
@@ -48,12 +49,17 @@
                 <div class="sidebar-categories">
                     <div class="head">Browse Categories</div>
                     <ul>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
+                        <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="all" onclick="handleClick(this)" ><label for="apple">All<span></span></label></li>
+                        <c:set var="categoryList" value="${requestScope.CATEGORY_LIST}"></c:set>
+                        <c:forEach var="category" items="${categoryList}">
+                            <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="${category.id}" onclick="handleClick(this)"><label for="apple">${category.name}<span></span></label></li>
+                        </c:forEach>
                     </ul>
+                    <script>
+                        function handleClick(myRadio) {
+                            document.getElementById("category").value = myRadio.value;
+                        }
+                    </script>
                 </div>
 
             </div>
@@ -77,27 +83,29 @@
                 <!-- Start Best Seller -->
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row">
-                        <!-- single product -->
-                        <div class="col-lg-4 col-md-6" >
-                            <div class="single-product">
-                                <img class="img-fluid" src="img/product/p1.jpg" alt="">
-                                <div class="product-details">
-                                    <h6>addidas New Hammer sole
-                                        for Sports person</h6>
-                                    <div class="price">
-                                        <h6>$150.00</h6>
-                                    </div>
-                                    <div class="prd-bottom">
 
-                                        <a href="" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">add to bag</p>
-                                        </a>
-
+                        <c:set var="cakeList" value="${requestScope.CAKE_LIST}"></c:set>
+                        <c:forEach var="cake" items="${cakeList}">
+                            <!-- single product -->
+                            <div class="col-lg-4 col-md-6" >
+                                <div class="single-product">
+                                    <img class="img-fluid" src="images/${cake.imagePath}" alt="">
+                                    <div class="product-details">
+                                        <h6>${cake.name}</h6>
+                                        <div class="price">
+                                            <h6>$${cake.price}</h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">add to bag</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:forEach>
+
 
                     </div>
                 </section>
