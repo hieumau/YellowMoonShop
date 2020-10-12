@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mh.user.controller;
+package com.mh.cart.controller;
 
+import com.mh.cart.Cart;
 import com.mh.controller.Constants;
-import com.mh.entity.Users;
-import com.mh.user.UserBLO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,14 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static com.mh.controller.Constants.*;
+import static com.mh.controller.ProcessLib.getCartFromSession;
+
 /**
  *
  * @author saost
  */
-public class LoginController extends HttpServlet {
-    private static final String ERROR = Constants.LOGIN_PAGE;
-    private static final String ADMIN = Constants.CREATE_CAKE_PAGE;
-    private static final String MEMBER = Constants.VIEW_CAKE_SHOP_CONTROLLER;
+public class AddToCartController extends HttpServlet {
+    private static final String ERROR = LOGIN_PAGE;
+    private static final String SUCCESS = VIEW_CAKE_SHOP_CONTROLLER;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,31 +40,22 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String url = ERROR;
-
         try {
-            //clear session
-            String userID = request.getParameter("userId");
-            String password = request.getParameter("password");
-            UserBLO usersBLO = new UserBLO();
-            Users user = usersBLO.checkLogin(userID, password);
-            if (user != null) {
-                if (user.getRoleId().getId() == Constants.ADMIN) {
-                    url = ADMIN;
-                } else if (user.getRoleId().getId() == Constants.MEMBER){
-                    url = MEMBER;
-                }
-                HttpSession session = request.getSession();
-                session.setAttribute("AUTH_USER", user);
-            } else {
-                HttpSession session = request.getSession();
-                session.setAttribute("ERROR_MESSAGE", "Wrong username or password!");
-            }
+            Cart cart = getCartFromSession(request);
 
-        } catch (Exception e) {
-            log("Error at LoginServlet " + e.toString());
+            int cakeId = Integer.parseInt(request.getParameter("cakeId"));
+            cart.add(cakeId);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("CART", cart);
+
+            url = SUCCESS;
+        } catch (Exception e){
+            e.printStackTrace();
         } finally {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

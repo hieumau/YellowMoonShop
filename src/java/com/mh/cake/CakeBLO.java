@@ -8,6 +8,7 @@ package com.mh.cake;
 import com.mh.entity.Cake;
 import com.mh.entity.Category;
 import com.mh.entity.Users;
+import com.mh.jpa_controller.CakeJpaController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,7 +25,7 @@ import java.util.List;
 public class CakeBLO {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("YellowMoonShopPU");
 
-    public static final int MAX_CAKE_PER_PAGE = 10;
+    public static final int MAX_CAKE_PER_PAGE = 9;
 
     public List<Cake> getCakeListSortByCreateTimeFilterByKeywordAndCategoryAndPriceRange(int page, String keyword, Category category, float minPrice, float maxPrice){
         List<Cake> cakeList = new ArrayList<>();
@@ -53,5 +54,56 @@ public class CakeBLO {
         cakeList = query.getResultList();
 
         return cakeList;
+    }
+
+    public long getNumberOfCakeByKeywordAndCategoryAndPriceRange(String keyword, Category category, float minPrice, float maxPrice){
+        EntityManager entityManager = emf.createEntityManager();
+
+        String categorySqlPatch = " ";
+        if (category != null){
+            categorySqlPatch = "AND cake.categoryId = :category ";
+        }
+
+        String sql = "SELECT count (cake.id) " +
+                "FROM Cake cake " +
+                "WHERE cake.status = true " +
+                "AND cake.quantity > 0 " +
+                "AND cake.name LIKE :keyword " +
+                "AND cake.price >= :minPrice AND cake.price <= :maxPrice " +
+                categorySqlPatch;
+        Query query = entityManager.createQuery(sql, Long.class);
+        query.setParameter("keyword", "%" + keyword + "%");
+        query.setParameter("minPrice", minPrice);
+        query.setParameter("maxPrice", maxPrice);
+        if (category != null)
+            query.setParameter("category", category);
+
+        return (long) query.getSingleResult();
+    }
+
+    public Cake get(int cakeId){
+        CakeJpaController cakeJpaController = new CakeJpaController(emf);
+        return cakeJpaController.findCake(cakeId);
+    }
+
+    public void delete(int cakeId){
+        CakeJpaController cakeJpaController = new CakeJpaController(emf);
+        Cake  cake = get(cakeId);
+        cake.setStatus(false);
+
+        try {
+            cakeJpaController.edit(cake);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Cake create(Cake cake){
+        Date date = new Date();
+        CakeJpaController cakeJpaController = new CakeJpaController(emf);
+
+        cakeJpaController.create(cake);
+
+        return null;
     }
 }

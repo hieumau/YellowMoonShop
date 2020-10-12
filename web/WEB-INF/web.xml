@@ -34,6 +34,26 @@
         <servlet-name>ViewCakeShopController</servlet-name>
         <servlet-class>com.mh.cake.controller.ViewCakeShopController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCartController</servlet-name>
+        <servlet-class>com.mh.cart.controller.ViewCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProceedCheckoutController</servlet-name>
+        <servlet-class>com.mh.cart.controller.ProceedCheckoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCartController</servlet-name>
+        <servlet-class>com.mh.cart.controller.AddToCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCartController</servlet-name>
+        <servlet-class>com.mh.cart.controller.UpdateCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckoutController</servlet-name>
+        <servlet-class>com.mh.cart.controller.CheckoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -57,6 +77,26 @@
     <servlet-mapping>
         <servlet-name>ViewCakeShopController</servlet-name>
         <url-pattern>/ViewCakeShopController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCartController</servlet-name>
+        <url-pattern>/ViewCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProceedCheckoutController</servlet-name>
+        <url-pattern>/ProceedCheckoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartController</servlet-name>
+        <url-pattern>/AddToCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCartController</servlet-name>
+        <url-pattern>/UpdateCartController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutController</servlet-name>
+        <url-pattern>/CheckoutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

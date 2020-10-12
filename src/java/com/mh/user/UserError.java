@@ -14,6 +14,17 @@ public class UserError {
     private String passwordError;
     private String fullNameError;
     private String passwordRepeatError;
+    private String addressError;
+    private String phoneNumberError;
+
+    public UserError(String userIdError, String passwordError, String fullNameError, String passwordRepeatError, String addressError, String phoneNumberError) {
+        this.userIdError = userIdError;
+        this.passwordError = passwordError;
+        this.fullNameError = fullNameError;
+        this.passwordRepeatError = passwordRepeatError;
+        this.addressError = addressError;
+        this.phoneNumberError = phoneNumberError;
+    }
 
     public UserError(String userIdError, String passwordError, String fullNameError, String passwordRepeatError) {
         this.userIdError = userIdError;
@@ -24,6 +35,22 @@ public class UserError {
 
     public UserError() {
 
+    }
+
+    public String getAddressError() {
+        return addressError;
+    }
+
+    public void setAddressError(String addressError) {
+        this.addressError = addressError;
+    }
+
+    public String getPhoneNumberError() {
+        return phoneNumberError;
+    }
+
+    public void setPhoneNumberError(String phoneNumberError) {
+        this.phoneNumberError = phoneNumberError;
     }
 
     public String getUserIdError() {

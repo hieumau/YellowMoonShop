@@ -2,6 +2,7 @@ package com.mh.controller;
 
 import com.mh.cake.CakeBLO;
 import com.mh.cake.CategoryBLO;
+import com.mh.cart.Cart;
 import com.mh.entity.Cake;
 import com.mh.entity.Category;
 import com.mh.entity.Users;
@@ -84,6 +85,18 @@ public class ProcessLib {
         return request.getSession();
     }
 
+    public static Cart getCartFromSession(HttpServletRequest request) {
+        Cart cart;
 
+        HttpSession session = request.getSession();
+        cart = (Cart) session.getAttribute("CART");
+        if (cart != null){
+            return cart;
+        } else {
+            cart = new Cart();
+            session.setAttribute("CART", cart);
+        }
+        return cart;
+    }
 
 }

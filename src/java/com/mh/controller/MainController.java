@@ -47,12 +47,27 @@ public class MainController implements Filter {
         mappedResources.put("Create cake", CREATE_CAKE_CONTROLLER);
         mappedResources.put("View cake shop", VIEW_CAKE_SHOP_CONTROLLER);
         mappedResources.put("Register", REGISTER_CONTROLLER);
+        mappedResources.put("View cart", VIEW_CART_CONTROLLER);
+        mappedResources.put("Update cart", UPDATE_CART_CONTROLLER);
+        mappedResources.put("Checkout", CHECKOUT_CONTROLLER);
+        mappedResources.put("Proceed to checkout", PROCEED_CHECKOUT_CONTROLLER);
+        mappedResources.put("Add to cart", ADD_TO_CART_CONTROLLER);
+        mappedResources.put("View login page", LOGIN_PAGE);
+
 
         guestResource.add(LOGIN_PAGE);
+        guestResource.add(LOGOUT_CONTROLLER);
         guestResource.add(LOGIN_CONTROLLER);
         guestResource.add(SHOPPING_PAGE);
         guestResource.add(VIEW_CAKE_SHOP_CONTROLLER);
         guestResource.add(REGISTER_CONTROLLER);
+        guestResource.add(VIEW_CART_CONTROLLER);
+        guestResource.add(UPDATE_CART_CONTROLLER);
+        guestResource.add(CHECKOUT_CONTROLLER);
+        guestResource.add(ADD_TO_CART_CONTROLLER);
+        guestResource.add(PROCEED_CHECKOUT_CONTROLLER);
+        guestResource.add(CART_PAGE);
+        guestResource.add(PROCEED_CHECKOUT_PAGE);
 
         adminResource.add(CREATE_CAKE_PAGE);
         adminResource.add(CREATE_CAKE_CONTROLLER);

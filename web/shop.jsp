@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <%@include file="user_header.jsp"%>
@@ -49,15 +50,38 @@
                 <div class="sidebar-categories">
                     <div class="head">Browse Categories</div>
                     <ul>
-                        <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="all" onclick="handleClick(this)" ><label for="apple">All<span></span></label></li>
+
+                        <c:choose>
+                            <c:when test="${param.get('sellectedCategory').contains('all')}">
+                                <li class="filter-list"><input class="pixel-radio" onchange="reload()" type="radio" name="category" value="all" checked="checked" onclick="handleClick(this)" ><label for="apple">All<span></span></label></li>
+                            </c:when>
+
+                            <c:otherwise>
+                                <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="all" onclick="handleClick(this)" ><label for="apple">All<span></span></label></li>
+                            </c:otherwise>
+                        </c:choose>
                         <c:set var="categoryList" value="${requestScope.CATEGORY_LIST}"></c:set>
                         <c:forEach var="category" items="${categoryList}">
-                            <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="${category.id}" onclick="handleClick(this)"><label for="apple">${category.name}<span></span></label></li>
+                            <c:choose>
+                                <c:when test="${param.get('sellectedCategory').equals(category.id.toString())}">
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="${category.id}" checked="checked" onclick="handleClick(this)"><label for="apple">${category.name}<span></span></label></li>
+                                </c:when>
+                                <c:when test="${param.get('sellectedCategory').equals(category.id.toString())}">
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="${category.id}" checked="checked" onclick="handleClick(this)"><label for="apple">${category.name}<span></span></label></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" name="category" value="${category.id}" onclick="handleClick(this)"><label for="apple">${category.name}<span></span></label></li>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </ul>
                     <script>
                         function handleClick(myRadio) {
+                            var minPrice = document.getElementById('minPrice').value;
+                            var maxPrice = document.getElementById('maxPrice').value;
+
                             document.getElementById("category").value = myRadio.value;
+                            window.location.href = 'MainController?btnAction=View cake shop&keyword=${keyword}&minPrice=' + minPrice +'&maxPrice=' + maxPrice + '&sellectedCategory=' + myRadio.value;
                         }
                     </script>
                 </div>
@@ -96,7 +120,7 @@
                                             <h6>$${cake.price}</h6>
                                         </div>
                                         <div class="prd-bottom">
-                                            <a href="" class="social-info">
+                                            <a onclick="addToCart(${cake.id})" class="social-info">
                                                 <span class="ti-bag"></span>
                                                 <p class="hover-text">add to bag</p>
                                             </a>
@@ -106,7 +130,15 @@
                             </div>
                         </c:forEach>
 
+                        <script>
+                            function addToCart(cakeId) {
+                                var minPrice = document.getElementById('minPrice').value;
+                                var maxPrice = document.getElementById('maxPrice').value;
+                                var category = document.getElementById("category").value;
 
+                                window.location.href = 'MainController?btnAction=Add to cart&keyword=${keyword}&minPrice=' + minPrice +'&maxPrice=' + maxPrice + '&sellectedCategory=' + category +'&cakeId=' + cakeId;
+                            }
+                        </script>
                     </div>
                 </section>
                 <!-- End Best Seller -->

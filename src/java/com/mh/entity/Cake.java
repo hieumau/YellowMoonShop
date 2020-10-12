@@ -226,5 +226,9 @@ public class Cake implements Serializable {
     public String toString() {
         return "com.mh.entity.Cake[ id=" + id + " ]";
     }
-    
+
+    public Boolean isEnough(int quantity){
+        if (this.quantity < quantity) return false;
+        return true;
+    }
 }
