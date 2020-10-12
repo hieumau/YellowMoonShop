@@ -28,6 +28,7 @@
 
     <c:set var="cart" value="${sessionScope.CART.cart}"></c:set>
     <c:set var="user" value="${sessionScope.AUTH_USER}"></c:set>
+    <c:set var="userError" value="${requestScope.USER_ERROR}"></c:set>
     <!--================Checkout Area =================-->
     <section class="checkout_area section_gap">
         <div class="container">
@@ -38,14 +39,17 @@
                         <h3>Billing Details</h3>
                         <div class="row contact_form">
                             <div class="col-md-12 form-group p_star">
+                                <span>${userError.fullNameError}</span>
                                 <input type="text" required class="form-control" id="fullName" value="${user.fullName}" name="fullName" placeholder="Full name *">
                             </div>
 
                             <div class="col-md-12 form-group p_star">
+                                <span>${userError.addressError}</span>
                                 <input type="text" required class="form-control" id="address" value="${user.address}" name="adress" placeholder="address *">
                             </div>
 
                             <div class="col-md-12 form-group">
+                                <span>${userError.phoneNumberError}</span>
                                 <input type="number" required class="form-control" id="phoneNumber" value="${user.phone}" name="phoneNumber" placeholder="Phone numbe *">
                             </div>
 

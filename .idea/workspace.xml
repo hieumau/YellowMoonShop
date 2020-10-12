@@ -19,32 +19,33 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="working on shoping page&#10;Price range done&#10;View Cake done">
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/Cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/CartBLO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/AddToCartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/CheckoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/ProceedCheckoutController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/UpdateCartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/ViewCartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/OrderBLO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/cart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proceed_checkout_page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/88b6f87e-5c05-4a53-96fc-74380f5a5e7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/88b6f87e-5c05-4a53-96fc-74380f5a5e7c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/88b6f87e-5c05-4a53-96fc-74380f5a5e7c/storage_v2/_src_/database/YellowMoonShop.SwIPeQ/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/88b6f87e-5c05-4a53-96fc-74380f5a5e7c/storage_v2/_src_/database/YellowMoonShop.SwIPeQ/schema/dbo.sYMBAA.meta" afterDir="false" />
+    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="checkout">
+      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cake/controller/UpdateCakeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/OrderDetailBLO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/controller/TrackingOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/controller/ViewOrderDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/create_cake_page.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/edit_cake_page.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/order_detail_page.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/tracking_order_page.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/tracking_order_result_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conf/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/conf/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cake/CakeBLO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cake/CakeBLO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cart/controller/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/CheckoutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/ProcessLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/ProcessLib.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/entity/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/entity/Cake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/user/UserError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/user/UserError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/order/OrderBLO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/order/OrderBLO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/user/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/user/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/user/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/confirmation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/create_cake.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proceed_checkout_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/proceed_checkout_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/single-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/single-product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/tracking.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/tracking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/user_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/user_header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,20 +84,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15039062" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web\js" />
-      <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web\css" />
       <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web" />
+      <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web\js" />
+      <recent name="C:\Users\saost\Desktop\LAB231\#LAB 2\YellowMoonShop\web\css" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -111,7 +113,7 @@
       <updated>1601975660967</updated>
       <workItem from="1601975662214" duration="58860000" />
       <workItem from="1602395876175" duration="24617000" />
-      <workItem from="1602430714998" duration="29231000" />
+      <workItem from="1602430714998" duration="46485000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <created>1602151726018</created>
@@ -169,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602406130713</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="checkout">
+      <created>1602500575078</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1602500575078</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +204,8 @@
     <MESSAGE value="Log" />
     <MESSAGE value="working on shoping page" />
     <MESSAGE value="working on shoping page&#10;Price range done&#10;View Cake done" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on shoping page&#10;Price range done&#10;View Cake done" />
+    <MESSAGE value="checkout" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="55" key="#Project_Structure" timestamp="1602150533514">
@@ -210,10 +220,10 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="388" y="282" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1768.955@0.0.1768.955" timestamp="1602397224738" />
-    <state x="287" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1602497009918">
+    <state x="287" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1602519516103">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="287" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1768.955@0.0.1768.955" timestamp="1602497009918" />
+    <state x="287" y="196" key="#com.intellij.ide.util.MemberChooser/0.0.1768.955@0.0.1768.955" timestamp="1602519516103" />
     <state x="186" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602210684525">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
@@ -230,10 +240,10 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="365" y="51" key="SettingsEditor/0.0.1768.955@0.0.1768.955" timestamp="1602038207433" />
-    <state x="48" y="213" key="Vcs.Push.Dialog.v2" timestamp="1602406141000">
+    <state x="48" y="213" key="Vcs.Push.Dialog.v2" timestamp="1602500583331">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="48" y="213" key="Vcs.Push.Dialog.v2/0.0.1768.955@0.0.1768.955" timestamp="1602406141000" />
+    <state x="48" y="213" key="Vcs.Push.Dialog.v2/0.0.1768.955@0.0.1768.955" timestamp="1602500583331" />
     <state x="93" y="93" width="1582" height="768" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602152741132">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
@@ -242,10 +252,10 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="624" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1768.955@0.0.1768.955" timestamp="1602038204448" />
-    <state x="1120" y="0" width="654" height="961" key="dock-window-1" timestamp="1602500553256">
+    <state x="1115" y="0" width="659" height="961" key="dock-window-1" timestamp="1602524958056">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="1120" y="0" width="654" height="961" key="dock-window-1/0.0.1768.955@0.0.1768.955" timestamp="1602500553256" />
+    <state x="1115" y="0" width="659" height="961" key="dock-window-1/0.0.1768.955@0.0.1768.955" timestamp="1602524958056" />
     <state x="-6" y="0" width="896" height="961" key="dock-window-2" timestamp="1602424793151">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
@@ -254,13 +264,23 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="121" y="223" key="run.anything.popup/0.0.1768.955@0.0.1768.955" timestamp="1602405391346" />
-    <state x="177" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1602403268736">
+    <state x="177" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1602520711698">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="177" y="209" width="672" height="678" key="search.everywhere.popup/0.0.1768.955@0.0.1768.955" timestamp="1602403268736" />
+    <state x="177" y="209" width="672" height="678" key="search.everywhere.popup/0.0.1768.955@0.0.1768.955" timestamp="1602520711698" />
     <state x="311" y="271" key="svn.repositoryBrowser" timestamp="1602151270619">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="311" y="271" key="svn.repositoryBrowser/0.0.1768.955@0.0.1768.955" timestamp="1602151270619" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/com/mh/order/controller/ViewOrderDetailController.java</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

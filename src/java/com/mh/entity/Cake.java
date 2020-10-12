@@ -7,6 +7,7 @@ package com.mh.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -207,6 +208,14 @@ public class Cake implements Serializable {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    public String getExpDateFormated(){
+        return DateFormat.getDateInstance().format(expirationDate);
+    }
+
+    public String getCreateDateFormated(){
+        return DateFormat.getDateInstance().format(createDate);
     }
 
     @Override

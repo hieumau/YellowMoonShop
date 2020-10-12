@@ -7,6 +7,7 @@ package com.mh.cart;
 
 import com.mh.cake.CakeBLO;
 import com.mh.entity.Cake;
+import com.mh.entity.Orders;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -18,6 +19,23 @@ import java.util.Map;
  */
 public class Cart implements Serializable {
     private Map<Cake, Integer> cart = new HashMap<>();
+    private Orders order;
+
+    public Cart(Map<Cake, Integer> cart, Orders order) {
+        this.cart = cart;
+        this.order = order;
+    }
+
+    public Cart(){
+
+    }
+    public Orders getOrder() {
+        return order;
+    }
+
+    public void setOrder(Orders order) {
+        this.order = order;
+    }
 
     public void add(int cakeId){
         CakeBLO cakeBLO = new CakeBLO();
@@ -45,9 +63,7 @@ public class Cart implements Serializable {
 
         if(quantity <= 0) remove(cakeId);
         else if (cake != null){
-            if (cart.get(cake) != null){
-                cart.put(cake, quantity);
-            }
+            cart.put(cake, quantity);
         }
     }
 

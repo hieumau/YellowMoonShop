@@ -3,17 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mh.cart.controller;
+package com.mh.order.controller;
 
 import com.mh.cart.Cart;
-import com.mh.entity.Orders;
 import com.mh.entity.Users;
 import com.mh.order.OrderBLO;
-import com.mh.user.UserError;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.persistence.criteria.Order;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +25,9 @@ import static com.mh.controller.ProcessLib.getCartFromSession;
  *
  * @author saost
  */
-public class CheckoutController extends HttpServlet {
-    private static final String ERROR = VIEW_CART_CONTROLLER;
-    private static final String SUCCESS = ORDER_DETAIL_PAGE;
+public class TrackingOrderController extends HttpServlet {
+    private static final String ERROR = TRACKING_ORDER_PAGE;
+    private static final String SUCCESS = TRACKING_ORDER_RESULT_PAGE;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,66 +40,26 @@ public class CheckoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String url = ERROR;
         try {
+            //get orderId
+            int orderId;
+            orderId = Integer.parseInt(request.getParameter("orderId"));
+
+            //check User
             Users user = getAuthUser(request);
-            if (user == null || user.getRoleId().getId() == GUEST){
-                user = new Users("guest");
-            }
-            Cart cart = getCartFromSession(request);
+            if (user.getRoleId().getId() != MEMBER) throw new Exception("Access denied");
 
-            String fullName;
-            String address;
-            String phoneNumber;
-            Boolean isValidInfo = true;
-            UserError userError = new UserError();
+            //check order
+            OrderBLO orderBLO = new OrderBLO();
+            Cart cart = orderBLO.getOrderAndOrderDetailsByUserAndOrderId(user.getId(), orderId);
 
-            //check valid info start
-            fullName = request.getParameter("fullName");
-            if (fullName == null){
-                isValidInfo = false;
-                userError.setFullNameError("You should fill your name!");
-            } else if (fullName.isEmpty()){
-                isValidInfo = false;
-                userError.setFullNameError("You should fill your name!");
-            }
-
-            address = request.getParameter("address");
-            if (address == null){
-                isValidInfo = false;
-                userError.setAddressError("You should fill your shipping address!");
-            } else if (address.isEmpty()){
-                isValidInfo = false;
-                userError.setAddressError("You should fill your shipping address!");
-            }
-
-            phoneNumber = request.getParameter("phoneNumber");
-            if (phoneNumber == null){
-                isValidInfo = false;
-                userError.setPhoneNumberError("You should fill your phone number!!");
-            } else if (phoneNumber.isEmpty()){
-                isValidInfo = false;
-                userError.setPhoneNumberError("You should fill your phone number!!");
-            }
-            //check valid info end
-
-
-            if (isValidInfo){
-                OrderBLO orderBLO = new OrderBLO();
-                Orders order = orderBLO.create(cart, user.getId(), fullName, address, phoneNumber);
-                if (order != null){
-                    HttpSession session = request.getSession();
-                    session.removeAttribute("CART");
-                    url = SUCCESS;
-
-                    //direct to view order detail
-                    request.setAttribute("ORDER", order);
-                    request.setAttribute("OLD_CART", cart);
-                }
+            if (cart != null) {
+                url = SUCCESS;
+                request.setAttribute("CART", cart);
             } else {
-                request.setAttribute("USER_ERROR", userError);
-                url = PROCEED_CHECKOUT_PAGE;
+                url = TRACKING_ORDER_PAGE;
+                request.setAttribute("MESSAGE", "Can't find this order!");
             }
         } catch (Exception e){
             e.printStackTrace();

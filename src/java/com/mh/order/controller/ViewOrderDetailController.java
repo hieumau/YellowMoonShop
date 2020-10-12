@@ -3,11 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mh.user.controller;
-
-import com.mh.controller.Constants;
-import com.mh.entity.Users;
-import com.mh.user.UserBLO;
+package com.mh.order.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,16 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author saost
  */
-public class LoginController extends HttpServlet {
-    private static final String ERROR = Constants.LOGIN_PAGE;
-    private static final String ADMIN = Constants.CREATE_CAKE_PAGE;
-    private static final String MEMBER = Constants.VIEW_CAKE_SHOP_CONTROLLER;
+public class ViewOrderDetailController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,33 +30,17 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String url = ERROR;
-
-        try {
-            //clear session
-            HttpSession session = request.getSession();
-            session.setAttribute("ERROR_MESSAGE", "");
-
-            String userID = request.getParameter("userId");
-            String password = request.getParameter("password");
-            UserBLO usersBLO = new UserBLO();
-            Users user = usersBLO.checkLogin(userID, password);
-            if (user != null) {
-                if (user.getRoleId().getId() == Constants.ADMIN) {
-                    url = ADMIN;
-                } else if (user.getRoleId().getId() == Constants.MEMBER){
-                    url = MEMBER;
-                }
-                session.setAttribute("AUTH_USER", user);
-            } else {
-                session.setAttribute("ERROR_MESSAGE", "Wrong username or password!");
-            }
-
-        } catch (Exception e) {
-            log("Error at LoginServlet " + e.toString());
-        } finally {
-            response.sendRedirect(url);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ViewOrderDetailController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ViewOrderDetailController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

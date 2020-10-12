@@ -41,6 +41,9 @@ public class RegisterController extends HttpServlet {
         UserError userError = new UserError();
 
         try {
+            HttpSession session = request.getSession();
+            session.setAttribute("ERROR_MESSAGE", "");
+
             String userId = request.getParameter("userId");
             String password = request.getParameter("password");
             String passwordRepeat = request.getParameter("passwordRepeat");
@@ -52,7 +55,7 @@ public class RegisterController extends HttpServlet {
             UserBLO userBLO = new UserBLO();
 
             if (userBLO.isExitsUserId(userId)){
-                userError.setUserIdError("This email is used");
+                userError.setUserIdError("This username is used");
                 check = false;
             }
 
@@ -64,9 +67,8 @@ public class RegisterController extends HttpServlet {
             if (check) {
                 Users user = userBLO.create(userId, password, fullName, address, phoneNumber);
                 if (user != null){
-                    HttpSession session = request.getSession();
-                    session.setAttribute("AUTH_USER", user);
                     url = SUCCESS;
+                    request.setAttribute("SUCCESS_MESSAGE", "Register successful");
                 }
             } else {
                 request.setAttribute("USER_ERROR",userError);

@@ -53,7 +53,10 @@ public class MainController implements Filter {
         mappedResources.put("Proceed to checkout", PROCEED_CHECKOUT_CONTROLLER);
         mappedResources.put("Add to cart", ADD_TO_CART_CONTROLLER);
         mappedResources.put("View login page", LOGIN_PAGE);
-
+        mappedResources.put("Update cake", UPDATE_CAKE_CONTROLLER);
+        mappedResources.put("Tracking order", TRACKING_ORDER_PAGE);
+        mappedResources.put("View order", VIEW_ORDER_CONTROLLER);
+        mappedResources.put("Track order", TRACKING_ORDER_CONTROLLER);
 
         guestResource.add(LOGIN_PAGE);
         guestResource.add(LOGOUT_CONTROLLER);
@@ -68,9 +71,16 @@ public class MainController implements Filter {
         guestResource.add(PROCEED_CHECKOUT_CONTROLLER);
         guestResource.add(CART_PAGE);
         guestResource.add(PROCEED_CHECKOUT_PAGE);
+        guestResource.add(ORDER_DETAIL_PAGE);
+
+        memberResource.add(TRACKING_ORDER_PAGE);
+        memberResource.add(TRACKING_ORDER_RESULT_PAGE);
+        memberResource.add(TRACKING_ORDER_CONTROLLER);
 
         adminResource.add(CREATE_CAKE_PAGE);
         adminResource.add(CREATE_CAKE_CONTROLLER);
+        adminResource.add(UPDATE_CART_CONTROLLER);
+        adminResource.add(UPDATE_CAKE_PAGE);
 
 
     }

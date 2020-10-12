@@ -60,11 +60,6 @@
                         </li>
 
                         <li class="nav-item submenu dropdown">
-                            <a onclick="window.location.href='MainController?btnAction=Track order'" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">Tracking</a>
-                        </li>
-
-                        <li class="nav-item submenu dropdown">
                             <c:if test="${not empty sessionScope.AUTH_USER}">
 
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

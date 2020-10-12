@@ -90,21 +90,7 @@
             <!-- End Filter Bar -->
 
             <div class="col-xl-9 col-lg-8 col-md-7">
-                <!-- Start Pageing Bar -->
-                <div class="filter-bar d-flex flex-wrap align-items-center">
-                    <div class="pagination">
-                        <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                        <a href="#">6</a>
-                        <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <!-- End Pageing Bar -->
 
-                <!-- Start Best Seller -->
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row">
 
@@ -116,13 +102,21 @@
                                     <img class="img-fluid" src="images/${cake.imagePath}" alt="">
                                     <div class="product-details">
                                         <h6>${cake.name}</h6>
+                                        <p>${cake.description}</p>
+                                        <p>Cre date: ${cake.createDateFormated}</p>
+                                        <p>Exp date: ${cake.expDateFormated}</p>
+
                                         <div class="price">
                                             <h6>$${cake.price}</h6>
                                         </div>
                                         <div class="prd-bottom">
                                             <a onclick="addToCart(${cake.id})" class="social-info">
                                                 <span class="ti-bag"></span>
-                                                <p class="hover-text">add to bag</p>
+                                                <p class="hover-text">ADD TO BAG</p>
+                                            </a>
+                                            <a class="social-info">
+                                                <span class="">${cake.quantity}</span>
+                                                <p class="hover-text">IN STOCK</p>
                                             </a>
                                         </div>
                                     </div>

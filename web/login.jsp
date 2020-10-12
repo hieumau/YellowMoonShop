@@ -32,6 +32,7 @@
      <h3>Log in</h3>
      <form class="row login_form" action="MainController" method="post" id="contactForm" novalidate="novalidate">
       <div class="col-md-12 form-group">
+       <span>${sessionScope.ERROR_MESSAGE}</span>
        <input type="text" class="form-control" name="userId" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required>
       </div>
       <div class="col-md-12 form-group">
@@ -46,30 +47,32 @@
    </div>
 
    <!--				register area-->
+   <c:set var="error" value="${requestScope.USER_ERROR}"></c:set>
    <div class="col-lg-6">
     <div class="login_form_inner">
      <h3>Register</h3>
+     <h6>${requestScope.SUCCESS_MESSAGE}</h6>
      <form class="row login_form" action="MainController" method="post"  novalidate="novalidate">
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.userIdError}</span>
        <input type="text" class="form-control" name="userId" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
       </div>
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.passwordError}</span>
        <input type="password" class="form-control"  name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
       </div>
 
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.passwordRepeatError}</span>
        <input type="password" class="form-control"  name="passwordRepeat" placeholder="Re-Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Re-Password'">
       </div>
 
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.fullNameError}</span>
        <input type="text" class="form-control" name="fullName" placeholder="Full Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Full Name'">
       </div>
 
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.addressError}</span>
        <input type="text" class="form-control" name="address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'">
       </div>
 
-      <div class="col-md-12 form-group">
+      <div class="col-md-12 form-group"><span>${error.phoneNumberError}</span>
        <input type="number" class="form-control"  name="phoneNumber" placeholder="Phone number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'">
       </div>
 

@@ -54,6 +54,22 @@
         <servlet-name>CheckoutController</servlet-name>
         <servlet-class>com.mh.cart.controller.CheckoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>create_cake_page</servlet-name>
+        <servlet-class>create_cake_page</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCakeController</servlet-name>
+        <servlet-class>com.mh.cake.controller.UpdateCakeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrackingOrderController</servlet-name>
+        <servlet-class>com.mh.order.controller.TrackingOrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrderDetailController</servlet-name>
+        <servlet-class>com.mh.order.controller.ViewOrderDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -97,6 +113,22 @@
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>
         <url-pattern>/CheckoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>create_cake_page</servlet-name>
+        <url-pattern>/create_cake_page</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCakeController</servlet-name>
+        <url-pattern>/UpdateCakeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrackingOrderController</servlet-name>
+        <url-pattern>/TrackingOrderController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrderDetailController</servlet-name>
+        <url-pattern>/ViewOrderDetailController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
