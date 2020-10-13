@@ -43,7 +43,7 @@
                         <tbody>
                         <c:set var="cart" value="${sessionScope.CART.cart}"></c:set>
 
-                        <form action="MainController" >
+                        <form action="MainController" class="container">
                             <%--Cart Items Start--%>
                             <c:forEach var="item" items="${cart}">
                                 <input type="hidden" name="cakeId" value="${item.key.id}">
@@ -51,7 +51,7 @@
                                     <td>
                                         <div class="media">
                                             <div class="d-flex">
-                                                <img src="images/${item.key.imagePath}" alt="">
+                                                <img src="images/${item.key.imagePath}" width="250" height="auto" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <p>${item.key.name}</p>

@@ -70,6 +70,10 @@
         <servlet-name>ViewOrderDetailController</servlet-name>
         <servlet-class>com.mh.order.controller.ViewOrderDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCakeDetailController</servlet-name>
+        <servlet-class>com.mh.cake.controller.ViewCakeDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -129,6 +133,10 @@
     <servlet-mapping>
         <servlet-name>ViewOrderDetailController</servlet-name>
         <url-pattern>/ViewOrderDetailController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCakeDetailController</servlet-name>
+        <url-pattern>/ViewCakeDetailController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

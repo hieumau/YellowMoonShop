@@ -81,6 +81,55 @@ public class CakeBLO {
         return (long) query.getSingleResult();
     }
 
+    public List<Cake> getCakeListSortByCreateTimeFilterByKeywordAndCategoryAndPriceRangeForAdmin(int page, String keyword, Category category, float minPrice, float maxPrice){
+        List<Cake> cakeList = new ArrayList<>();
+        EntityManager entityManager = emf.createEntityManager();
+        String categorySqlPatch = " ";
+        if (category != null){
+            categorySqlPatch = "AND cake.categoryId = :category ";
+        }
+
+        String sql = "SELECT cake " +
+                "FROM Cake cake " +
+                "WHERE cake.name LIKE :keyword " +
+                "AND cake.price >= :minPrice AND cake.price <= :maxPrice " +
+                categorySqlPatch +
+                "ORDER BY cake.createDate DESC";
+        Query query = entityManager.createQuery(sql, Cake.class);
+        query.setParameter("keyword", "%" + keyword + "%");
+        query.setParameter("minPrice", minPrice);
+        query.setParameter("maxPrice", maxPrice);
+        if (category != null)
+            query.setParameter("category", category);
+        query.setFirstResult((page-1) * MAX_CAKE_PER_PAGE);
+        query.setMaxResults(MAX_CAKE_PER_PAGE);
+        cakeList = query.getResultList();
+
+        return cakeList;
+    }
+    public long getNumberOfCakeByKeywordAndCategoryAndPriceRangeForAdmin(String keyword, Category category, float minPrice, float maxPrice){
+        EntityManager entityManager = emf.createEntityManager();
+
+        String categorySqlPatch = " ";
+        if (category != null){
+            categorySqlPatch = "AND cake.categoryId = :category ";
+        }
+
+        String sql = "SELECT count (cake.id) " +
+                "FROM Cake cake " +
+                "WHERE cake.name LIKE :keyword " +
+                "AND cake.price >= :minPrice AND cake.price <= :maxPrice " +
+                categorySqlPatch;
+        Query query = entityManager.createQuery(sql, Long.class);
+        query.setParameter("keyword", "%" + keyword + "%");
+        query.setParameter("minPrice", minPrice);
+        query.setParameter("maxPrice", maxPrice);
+        if (category != null)
+            query.setParameter("category", category);
+
+        return (long) query.getSingleResult();
+    }
+
     public Cake get(int cakeId){
         CakeJpaController cakeJpaController = new CakeJpaController(emf);
         return cakeJpaController.findCake(cakeId);
@@ -104,6 +153,17 @@ public class CakeBLO {
 
         cakeJpaController.create(cake);
 
+        return null;
+    }
+
+    public Cake update(Cake cake) {
+        CakeJpaController cakeJpaController = new CakeJpaController(emf);
+        try {
+            cakeJpaController.edit(cake);
+            return cake;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 }

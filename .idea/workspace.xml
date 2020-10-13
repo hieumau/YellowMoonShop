@@ -19,34 +19,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="checkout">
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cake/controller/UpdateCakeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/OrderDetailBLO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/controller/TrackingOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/java/com/mh/order/controller/ViewOrderDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/create_cake_page.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/edit_cake_page.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/order_detail_page.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/tracking_order_page.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/tracking_order_result_page.jsp" afterDir="false" />
+    <list default="true" id="59e151c5-96fe-460f-862a-8f6555bfaa13" name="Default Changelist" comment="done user and guest function">
+      <change afterPath="$PROJECT_DIR$/src/java/com/mh/cake/controller/ViewCakeDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/shop_admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/YellowMoonShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/YellowMoonShop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cart/controller/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cart/controller/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cake/CakeBLO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cake/CakeBLO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cake/controller/UpdateCakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cake/controller/UpdateCakeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/cake/controller/ViewCakeShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/cake/controller/ViewCakeShopController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/mh/controller/ProcessLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/controller/ProcessLib.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/entity/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/entity/Cake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/order/OrderBLO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/order/OrderBLO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/java/com/mh/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/user/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/mh/user/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/mh/user/controller/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/create_cake.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/proceed_checkout_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/proceed_checkout_page.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/create_cake_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/create_cake_page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/edit_cake_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/edit_cake_page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/elements.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/elements.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/single-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/single-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/tracking.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/tracking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/user_header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/user_header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,9 +76,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-io-2.8.0.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15039062" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -113,7 +105,7 @@
       <updated>1601975660967</updated>
       <workItem from="1601975662214" duration="58860000" />
       <workItem from="1602395876175" duration="24617000" />
-      <workItem from="1602430714998" duration="46485000" />
+      <workItem from="1602430714998" duration="77139000" />
     </task>
     <task id="LOCAL-00001" summary="add .gitignore">
       <created>1602151726018</created>
@@ -178,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602500575078</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="done user and guest function">
+      <created>1602525868553</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1602525868553</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +204,8 @@
     <MESSAGE value="working on shoping page" />
     <MESSAGE value="working on shoping page&#10;Price range done&#10;View Cake done" />
     <MESSAGE value="checkout" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkout" />
+    <MESSAGE value="done user and guest function" />
+    <option name="LAST_COMMIT_MESSAGE" value="done user and guest function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="55" key="#Project_Structure" timestamp="1602150533514">
@@ -228,6 +228,10 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="186" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1768.955@0.0.1768.955" timestamp="1602210684525" />
+    <state x="267" y="277" key="FileChooserDialogImpl" timestamp="1602576261831">
+      <screen x="0" y="0" width="1768" height="955" />
+    </state>
+    <state x="267" y="277" key="FileChooserDialogImpl/0.0.1768.955@0.0.1768.955" timestamp="1602576261831" />
     <state x="176" y="315" width="632" height="388" key="Github.ShareDialog" timestamp="1602151508444">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
@@ -236,14 +240,14 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="203" y="178" key="Github.UntrackedFilesDialog/0.0.1768.955@0.0.1768.955" timestamp="1602151558486" />
-    <state x="365" y="51" key="SettingsEditor" timestamp="1602038207433">
+    <state x="41" y="104" key="SettingsEditor" timestamp="1602576310168">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="365" y="51" key="SettingsEditor/0.0.1768.955@0.0.1768.955" timestamp="1602038207433" />
-    <state x="48" y="213" key="Vcs.Push.Dialog.v2" timestamp="1602500583331">
+    <state x="41" y="104" key="SettingsEditor/0.0.1768.955@0.0.1768.955" timestamp="1602576310168" />
+    <state x="48" y="213" key="Vcs.Push.Dialog.v2" timestamp="1602526547725">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="48" y="213" key="Vcs.Push.Dialog.v2/0.0.1768.955@0.0.1768.955" timestamp="1602500583331" />
+    <state x="48" y="213" key="Vcs.Push.Dialog.v2/0.0.1768.955@0.0.1768.955" timestamp="1602526547725" />
     <state x="93" y="93" width="1582" height="768" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602152741132">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
@@ -252,18 +256,18 @@
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="624" y="368" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1768.955@0.0.1768.955" timestamp="1602038204448" />
-    <state x="1115" y="0" width="659" height="961" key="dock-window-1" timestamp="1602524958056">
+    <state x="1218" y="0" width="556" height="961" key="dock-window-1" timestamp="1602612334825">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="1115" y="0" width="659" height="961" key="dock-window-1/0.0.1768.955@0.0.1768.955" timestamp="1602524958056" />
+    <state x="1218" y="0" width="556" height="961" key="dock-window-1/0.0.1768.955@0.0.1768.955" timestamp="1602612334825" />
     <state x="-6" y="0" width="896" height="961" key="dock-window-2" timestamp="1602424793151">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
     <state x="-6" y="0" width="896" height="961" key="dock-window-2/0.0.1768.955@0.0.1768.955" timestamp="1602424793151" />
-    <state x="121" y="223" key="run.anything.popup" timestamp="1602405391346">
+    <state x="121" y="223" key="run.anything.popup" timestamp="1602609957677">
       <screen x="0" y="0" width="1768" height="955" />
     </state>
-    <state x="121" y="223" key="run.anything.popup/0.0.1768.955@0.0.1768.955" timestamp="1602405391346" />
+    <state x="121" y="223" key="run.anything.popup/0.0.1768.955@0.0.1768.955" timestamp="1602609957677" />
     <state x="177" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1602520711698">
       <screen x="0" y="0" width="1768" height="955" />
     </state>

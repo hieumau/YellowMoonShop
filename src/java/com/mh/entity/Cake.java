@@ -5,6 +5,8 @@
  */
 package com.mh.entity;
 
+import com.mh.controller.ProcessLib;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -212,6 +214,13 @@ public class Cake implements Serializable {
 
     public String getExpDateFormated(){
         return DateFormat.getDateInstance().format(expirationDate);
+    }
+
+    public String converExpDayToString(String pattern){
+        return ProcessLib.convertDateToString(expirationDate, pattern);
+    }
+    public String converCreateDayToString(String pattern){
+        return ProcessLib.convertDateToString(createDate, pattern);
     }
 
     public String getCreateDateFormated(){

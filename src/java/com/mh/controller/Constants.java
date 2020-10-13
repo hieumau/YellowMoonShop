@@ -33,8 +33,9 @@ public class Constants {
     public final static String TRACKING_ORDER_PAGE = "tracking_order_page.jsp";
     public final static String TRACKING_ORDER_CONTROLLER = TrackingOrderController.class.getSimpleName();
     public final static String TRACKING_ORDER_RESULT_PAGE = "tracking_order_result_page.jsp";
-
     public final static String VIEW_ORDER_CONTROLLER = ViewOrderDetailController.class.getSimpleName();
+    public final static String VIEW_CAKE_DETAIL_CONTROLLER = ViewCakeDetailController.class.getSimpleName();
+    public final static String SHOP_ADMIN_PAGE = "shop_admin.jsp";
 
 
     public static final int ADMIN = 2;

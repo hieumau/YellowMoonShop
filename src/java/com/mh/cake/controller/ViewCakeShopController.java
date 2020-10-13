@@ -57,8 +57,8 @@ public class ViewCakeShopController extends HttpServlet {
             request.setAttribute("CAKE_LIST", cakeList);
             // END INIT DATA
 
-
-        url = SUCCESS;
+        if (authUser.getRoleId().getId() == ADMIN) url = SHOP_ADMIN_PAGE;
+        else url = SUCCESS;
         } catch (Exception e){
             e.printStackTrace();
         }

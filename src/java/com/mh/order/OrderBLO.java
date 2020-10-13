@@ -11,7 +11,6 @@ import com.mh.jpa_controller.CakeJpaController;
 import com.mh.jpa_controller.OrderDetailJpaController;
 import com.mh.jpa_controller.OrdersJpaController;
 import com.mh.user.UserBLO;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

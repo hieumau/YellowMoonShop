@@ -57,6 +57,8 @@ public class MainController implements Filter {
         mappedResources.put("Tracking order", TRACKING_ORDER_PAGE);
         mappedResources.put("View order", VIEW_ORDER_CONTROLLER);
         mappedResources.put("Track order", TRACKING_ORDER_CONTROLLER);
+        mappedResources.put("View cake detail", VIEW_CAKE_DETAIL_CONTROLLER);
+        mappedResources.put("View create cake page", UPDATE_CAKE_PAGE);
 
         guestResource.add(LOGIN_PAGE);
         guestResource.add(LOGOUT_CONTROLLER);
@@ -81,6 +83,10 @@ public class MainController implements Filter {
         adminResource.add(CREATE_CAKE_CONTROLLER);
         adminResource.add(UPDATE_CART_CONTROLLER);
         adminResource.add(UPDATE_CAKE_PAGE);
+        adminResource.add(VIEW_CAKE_DETAIL_CONTROLLER);
+        adminResource.add(SHOP_ADMIN_PAGE);
+        adminResource.add(UPDATE_CAKE_CONTROLLER);
+
 
 
     }
@@ -145,6 +151,7 @@ public class MainController implements Filter {
             }
 
             response.sendRedirect(VIEW_CAKE_SHOP_CONTROLLER);
+//            response.sendRedirect(UPDATE_CAKE_PAGE);
 
 
         } catch (Exception e){
